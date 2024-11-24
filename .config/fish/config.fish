@@ -101,7 +101,46 @@ if status is-interactive
         --color header:italic
         --header '(FISH)'"
 
+    # Use fd instead of find and ignore git files (in .gitignore)
+    set -x FZF_DEFAULT_COMMAND "fd --hidden --strip-cwd-prefix --exclude .git"
+    set -x FZF_CTRL_T_COMMAND $FZF_DEFAULT_COMMAND
+    set -x FZF_ALT_C_COMMAND "fd --type=d --hidden --strip-cwd-prefix --exclude .git"
+
+    # Use fd for listing path candidates
+    function _fzf_compgen_path
+        fd --hidden --exclude .git . $argv
+    end
+
+    # Use fd to generate the list for directory completion
+    function _fzf_compgen_dir
+        fd --type=d --hidden --exclude .git . $argv
+    end
+
+    # Function to handle FZF completion with previews
+    function _fzf_comprun
+        set command $argv[1]
+        set -e argv[1]
+        switch $command
+            case cd
+                fzf --preview 'eza --tree --color=always {} | head -200' $argv
+            case export
+                fzf --preview "command echo $argv" $argv
+            case unset
+                fzf --preview "command echo $argv" $argv
+            case ssh
+                fzf --preview 'dig {}' $argv
+            case '*'
+                fzf --preview $eza_or_bat $argv
+        end
+    end
+
+    # thefuck
+    # Alias is: fuck
     thefuck --alias | source
+
+    # zoxide (better cd)
+    eval (zoxide init fish)
+    alias cd="z"
 
     # Dotfiles
     alias dotfiles='/usr/bin/git --git-dir=$HOME/Documents/Dotfiles --work-tree=$HOME'
