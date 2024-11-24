@@ -1,0 +1,26 @@
+# ~/.config/starship.toml
+# https://starship.rs/config/
+
+"$schema" = 'https://starship.rs/config-schema.json'
+
+add_newline = false
+
+format = '$shell $directory$character'
+
+# right_format = 'Hello there.'
+
+[directory]
+truncation_length = 3
+truncation_symbol = '...'
+home_symbol = ''
+read_only = " "
+
+[line_break]
+disabled = true
+
+[shell]
+zsh_indicator = 'zsh'
+fish_indicator = 'fish'
+format = '[ $indicator]($style)'
+style = 'yellow bold'
+disabled = false
