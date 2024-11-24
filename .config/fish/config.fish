@@ -139,8 +139,8 @@ if status is-interactive
     thefuck --alias | source
 
     # zoxide (better cd)
-    eval (zoxide init fish)
-    alias cd="z"
+    zoxide init fish | source
+    alias cd='z'
 
     # Dotfiles
     alias dotfiles='/usr/bin/git --git-dir=$HOME/Documents/Dotfiles --work-tree=$HOME'
