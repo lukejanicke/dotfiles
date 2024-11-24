@@ -145,4 +145,16 @@ if status is-interactive
     # Dotfiles
     alias dotfiles='/usr/bin/git --git-dir=$HOME/Documents/Dotfiles --work-tree=$HOME'
 
+    # Set themes based on macOS appearance
+    function set_themes
+        if defaults read -g AppleInterfaceStyle 2>/dev/null | grep -q "Dark"
+            set -gx BAT_THEME "Catppuccin Mocha"
+            fish_config theme choose "Catppuccin Mocha"
+        else
+            set -gx BAT_THEME "Catppuccin Latte"
+            fish_config theme choose "Catppuccin Latte"
+        end
+    end
+    set_themes
+
 end

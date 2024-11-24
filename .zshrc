@@ -111,3 +111,13 @@ alias cd="z"
 
 # Dotfiles
 alias dotfiles='/usr/bin/git --git-dir=$HOME/Documents/Dotfiles --work-tree=$HOME'
+
+# Set bat theme based on macOS appearance
+set_bat_theme() {
+  if defaults read -g AppleInterfaceStyle 2>/dev/null | grep -q "Dark"; then
+    export BAT_THEME="Catppuccin Mocha"
+  else
+    export BAT_THEME="Catppuccin Latte"
+  fi
+}
+set_bat_theme
