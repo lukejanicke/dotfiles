@@ -7,7 +7,7 @@ add_newline = false
 
 format = '$shell $directory$character'
 
-# right_format = 'Hello there.'
+right_format = '$git_branch$git_status'
 
 [directory]
 truncation_length = 3
@@ -21,6 +21,16 @@ disabled = true
 [shell]
 zsh_indicator = 'zsh'
 fish_indicator = 'fish'
-format = '[ $indicator]($style)'
 style = 'yellow bold'
+format = '[ $indicator]($style)'
+disabled = false
+
+[git_branch]
+symbol = ' '
+style = 'bold purple'
+format = '[$symbol$branch]($style) '
+
+[git_status]
+style = 'red bold'
+format = '[$all_status$ahead_behind]($style)'
 disabled = false
