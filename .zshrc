@@ -1,5 +1,3 @@
-# Hello there!
-
 # ~/.zshrc
 
 # Set SHELL for Zsh sessions
