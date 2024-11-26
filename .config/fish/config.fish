@@ -63,6 +63,9 @@ if status is-interactive
     # Source
     alias s='source ~/.config/fish/config.fish'
 
+    # Reset Launchpad
+    alias apps='defaults write com.apple.dock ResetLaunchPad -bool true; killall Dock'
+
     # eza
     alias ls='eza --color=always --icons=always'
     alias tree='eza --tree --color=always --icons=always'
