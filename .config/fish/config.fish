@@ -161,3 +161,6 @@ if status is-interactive
     set_themes
 
 end
+
+# Added by Windsurf
+fish_add_path /Users/lukejanicke/.codeium/windsurf/bin
