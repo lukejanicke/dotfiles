@@ -19,8 +19,8 @@ if status is-interactive
     set USERSHELL (dscl . -read /Users/(whoami) UserShell | awk '{print $2}')
 
     # Fish Greeting
-    # set -U fish_greeting "SHELL $SHELL UserShell $USERSHELL"
-    set -U fish_greeting ""
+    set -U fish_greeting "SHELL $SHELL UserShell $USERSHELL"
+    # set -U fish_greeting ""
 
     # Basic Fish Prompt
     function fish_prompt
@@ -162,5 +162,5 @@ if status is-interactive
 
 end
 
-# Added by Windsurf
+# Windsurf
 fish_add_path /Users/lukejanicke/.codeium/windsurf/bin

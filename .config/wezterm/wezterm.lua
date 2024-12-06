@@ -11,7 +11,7 @@ local config = wezterm.config_builder()
 -- Catppuccin Theme
 function scheme_for_appearance(appearance)
 	if appearance:find('Dark') then
-		return 'Catppuccin Macchiato'
+		return 'Catppuccin Mocha'
 	else
 		return 'Catppuccin Latte'
 	end
