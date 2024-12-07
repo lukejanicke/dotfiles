@@ -51,9 +51,6 @@ export FZF_CTRL_R_OPTS="
   --color header:italic
   --header 'Use CONTROL + Y to copy command into clipboard (ZSH)'"
 
-# Choose eza or bat command dynamically
-# eza_or_bat="if [ -d {} ]; then eza --tree --color=always --icons=always {}; else bat -n --color=always {}; fi"
-
 # CONTROL + T
 # - Search files and diorectories
 # - Preview file content using bat or directory structure using eza
