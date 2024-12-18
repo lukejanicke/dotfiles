@@ -1,0 +1,6 @@
+# ~/.config/bat/config
+
+--theme="Catppuccin Latte"
+--theme="Catppuccin Frappe"
+--theme="Catppuccin Macchiato"
+--theme="Catppuccin Mocha"
