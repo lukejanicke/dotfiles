@@ -174,5 +174,5 @@ if status is-interactive
 
 end
 
-# Windsurf
+# Added by Windsurf
 fish_add_path /Users/lukejanicke/.codeium/windsurf/bin

@@ -118,5 +118,6 @@ set_bat_theme() {
   fi
 }
 set_bat_theme
+
 # Added by Windsurf
 export PATH="/Users/lukejanicke/.codeium/windsurf/bin:$PATH"
