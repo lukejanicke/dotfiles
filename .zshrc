@@ -33,12 +33,12 @@ export PATH="/Applications/WezTerm.app/Contents/MacOS:$PATH"
 # Source
 alias s='source ~/.zshrc'
 
-# Reset Launchpad
-alias apps='defaults write com.apple.dock ResetLaunchPad -bool true; killall Dock'
-
 # eza
 alias ls='eza --color=always --icons=always'
 alias tree='eza --tree --color=always --icons=always'
+
+# yt-dlp
+alias youtube='yt-dlp'
 
 # fzf
 source <(fzf --zsh)
@@ -118,3 +118,5 @@ set_bat_theme() {
   fi
 }
 set_bat_theme
+# Added by Windsurf
+export PATH="/Users/lukejanicke/.codeium/windsurf/bin:$PATH"

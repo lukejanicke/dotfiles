@@ -48,7 +48,7 @@ if status is-interactive
     end
 
     # Fish Right Prompt
-    function fish_right_prompt
+    function fish_right_prompt; 
         # EMPTY FOR NOW
     end
 
@@ -61,14 +61,22 @@ if status is-interactive
     fish_add_path /Applications/WezTerm.app/Contents/MacOS
 
     # Source
-    alias s='source ~/.config/fish/config.fish'
-
-    # Reset Launchpad
-    alias apps='defaults write com.apple.dock ResetLaunchPad -bool true; killall Dock'
+    function s
+        source ~/.config/fish/config.fish
+    end
 
     # eza
-    alias ls='eza --color=always --icons=always'
-    alias tree='eza --tree --color=always --icons=always'
+    function ls
+        eza --color=always --icons=always
+    end
+    function tree
+        eza --tree --color=always --icons=always
+    end
+
+    # yt-dlp
+    function youtube
+        yt-dlp $argv
+    end
 
     # fzf
     fzf --fish | source
@@ -143,10 +151,14 @@ if status is-interactive
 
     # zoxide (better cd)
     zoxide init fish | source
-    alias cd='z'
+    function cd
+        z
+    end
 
     # Dotfiles
-    function dotfiles; /usr/bin/git --git-dir=$HOME/Documents/Dotfiles --work-tree=$HOME $argv; end
+    function dotfiles
+        /usr/bin/git --git-dir=$HOME/Documents/Dotfiles --work-tree=$HOME $argv
+    end
 
     # Set themes based on macOS appearance
     function set_themes
