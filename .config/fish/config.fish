@@ -67,10 +67,10 @@ if status is-interactive
 
     # eza
     function ls
-        eza --color=always --icons=always
+        eza --color=always --icons=always $argv
     end
     function tree
-        eza --tree --color=always --icons=always
+        eza --tree --color=always --icons=always $argv
     end
 
     # yt-dlp
@@ -152,7 +152,7 @@ if status is-interactive
     # zoxide (better cd)
     zoxide init fish | source
     function cd
-        z
+        z $argv
     end
 
     # Dotfiles
