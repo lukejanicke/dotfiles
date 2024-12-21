@@ -16,11 +16,14 @@ set -x SHELL (command -v fish)
 if status is-interactive
 
     # Query UserShell
-    set USERSHELL (dscl . -read /Users/(whoami) UserShell | awk '{print $2}')
+    # set USERSHELL (dscl . -read /Users/(whoami) UserShell | awk '{print $2}')
 
     # Fish Greeting
-    set -U fish_greeting "SHELL $SHELL UserShell $USERSHELL"
-    # set -U fish_greeting ""
+    # set -U fish_greeting "SHELL $SHELL UserShell $USERSHELL"
+    set -U fish_greeting ""
+
+    # No Fish window title bar updates
+    function fish_title; end
 
     # Basic Fish Prompt
     function fish_prompt

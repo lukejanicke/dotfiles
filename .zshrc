@@ -4,10 +4,10 @@
 export SHELL=$(which zsh)
 
 # Query UserShell
-USERSHELL=$(dscl . -read /Users/$(whoami) UserShell | awk '{print $2}')
+# USERSHELL=$(dscl . -read /Users/$(whoami) UserShell | awk '{print $2}')
 
 # Greeting
-echo "SHELL $SHELL UserShell $USERSHELL"
+# echo "SHELL $SHELL UserShell $USERSHELL"
 
 # Basic Pronmpt
 PROMPT='%B%F{yellow}zsh%f%b %B%F{blue}%~%f%b %(?.%F{green}.%F{red})%(!.❯❯.❯)%f '
