@@ -15,7 +15,7 @@ end
 config.color_scheme = scheme_for_appearance(wezterm.gui.get_appearance())
 
 -- Fonts
-config.font = wezterm.font('IosevkaCustomSansTerminal Nerd Font Mono')
+config.font = wezterm.font('IosevkaFixed Nerd Font Mono')
 config.font_size = 13
 
 -- Window
