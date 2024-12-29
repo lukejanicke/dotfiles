@@ -1,0 +1,30 @@
+{
+  "[html][css][javascript][json][jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "diffEditor.codeLens": true,
+  "editor.codeLensFontFamily": "Iosevka Aile",
+  "editor.codeLensFontSize": 12,
+  "editor.fontFamily": "Iosevka Aile",
+  "editor.fontLigatures": true,
+  "editor.fontSize": 13,
+  "editor.fontWeight": "400",
+  "editor.inlayHints.fontSize": 12,
+  "explorer.confirmDragAndDrop": false,
+  "git.confirmSync": false,
+  "git.openRepositoryInParentFolders": "never",
+  "markdown.preview.fontFamily": "Inter",
+  "notebook.markup.fontSize": 13,
+  "terminal.integrated.fontFamily": "\"IosevkaFixed Nerd Font Mono\"",
+  "terminal.integrated.fontSize": 13,
+  "terminal.integrated.fontWeight": 400,
+  "terminal.integrated.fontWeightBold": 700,
+  "terminal.integrated.gpuAcceleration": "on",
+  "terminal.integrated.minimumContrastRatio": 1,
+  "window.autoDetectColorScheme": true,
+  "window.systemColorTheme": "auto",
+  "workbench.colorTheme": "Catppuccin Mocha",
+  "workbench.iconTheme": "catppuccin-mocha",
+  "workbench.preferredDarkColorTheme": "Catppuccin Mocha",
+  "workbench.preferredLightColorTheme": "Catppuccin Latte"
+}

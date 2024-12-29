@@ -1,0 +1,51 @@
+# ~/.config/starship.toml
+# https://starship.rs/config/
+
+"$schema" = "https://starship.rs/config-schema.json"
+
+format = "$shell$username$directory$character"
+
+right_format = "$git_branch $git_status"
+
+add_newline = false
+
+[line_break]
+disabled = true
+
+[character]
+success_symbol = "[❯](bold green)"
+error_symbol = "[❯](bold red)"
+format = "[$symbol]($style) "
+
+[directory]
+truncation_length = 0
+home_symbol = "~"
+read_only = " ro"
+read_only_style = "red"
+truncate_to_repo = false
+use_logical_path = true
+format = "[$path]($style)[$read_only]($read_only_style) "
+
+[username]
+style_user = 'black bold'
+style_root = 'red bold'
+format = '[$user]($style) '
+disabled = false
+show_always = false
+
+[shell]
+zsh_indicator = "zsh"
+fish_indicator = "fish"
+style = "yellow bold"
+format = "[$indicator]($style) "
+disabled = false
+
+[git_branch]
+symbol = "git"
+style = "blue bold"
+format = "[$symbol $branch]($style)"
+
+[git_status]
+style = "red bold"
+format = "[$all_status$ahead_behind]($style)"
+disabled = false
