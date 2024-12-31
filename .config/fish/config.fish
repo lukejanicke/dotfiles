@@ -10,22 +10,18 @@ set -gx HOMEBREW_REPOSITORY /opt/homebrew
 set -gx MANPATH /opt/homebrew/share/man $MANPATH
 set -gx INFOPATH /opt/homebrew/share/info $INFOPATH
 
-# Set SHELL for Fish sessions
-set -x SHELL (command -v fish)
+# MacTeX
+set -gx PATH /usr/local/texlive/2024/bin/universal-darwin $PATH
 
 if status is-interactive
 
-    # Query UserShell
-    # set USERSHELL (dscl . -read /Users/(whoami) UserShell | awk '{print $2}')
-
-    # Fish Greeting
-    # set -U fish_greeting "SHELL $SHELL UserShell $USERSHELL"
+    # Fish greeting
     set -U fish_greeting ""
 
     # No Fish window title bar updates
     function fish_title; end
 
-    # Basic Fish Prompt
+    # Fish prompt
     function fish_prompt
         set -l last_status $status
         set_color --bold yellow
@@ -50,23 +46,27 @@ if status is-interactive
         command echo -n " "
     end
 
-    # Fish Right Prompt
+    # Fish right prompt
     function fish_right_prompt; 
         # EMPTY FOR NOW
     end
 
-    # Starship Prompt
+    # Starship
     # Should be preceded by Homebrew path configuration!
     starship init fish | source
-
-    # WezTerm
-    # set -gx PATH $PATH /Applications/WezTerm.app/Contents/MacOS
-    fish_add_path /Applications/WezTerm.app/Contents/MacOS
 
     # Source
     function s
         source ~/.config/fish/config.fish
     end
+
+    # Python
+    set -x PYENV_ROOT $HOME/.pyenv
+    test -d $PYENV_ROOT/bin; and set -x PATH $PYENV_ROOT/bin $PATH
+    pyenv init | source
+
+    # Ensure pyenv shims are in the PATH for pip and pip3
+    set -x PATH $PYENV_ROOT/shims $PATH
 
     # eza
     function ls
@@ -130,7 +130,7 @@ if status is-interactive
         fd --type=d --hidden --exclude .git . $argv
     end
 
-    # Function to handle FZF completion with previews
+    # More fzf previews
     function _fzf_comprun
         set command $argv[1]
         set -e argv[1]
@@ -152,15 +152,10 @@ if status is-interactive
     # Alias is: fuck
     thefuck --alias | source
 
-    # zoxide (better cd)
+    # zoxide
     zoxide init fish | source
     function cd
         z $argv
-    end
-
-    # Dotfiles
-    function dotfiles
-        /usr/bin/git --git-dir=$HOME/Documents/Dotfiles --work-tree=$HOME $argv
     end
 
     # Set themes based on macOS appearance
@@ -176,6 +171,3 @@ if status is-interactive
     set_themes
 
 end
-
-# Added by Windsurf
-fish_add_path /Users/lukejanicke/.codeium/windsurf/bin
