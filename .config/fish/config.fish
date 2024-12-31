@@ -60,13 +60,10 @@ if status is-interactive
         source ~/.config/fish/config.fish
     end
 
-    # Python
-    set -x PYENV_ROOT $HOME/.pyenv
-    test -d $PYENV_ROOT/bin; and set -x PATH $PYENV_ROOT/bin $PATH
-    pyenv init | source
-
-    # Ensure pyenv shims are in the PATH for pip and pip3
-    set -x PATH $PYENV_ROOT/shims $PATH
+    # pyenv
+    set -Ux PYENV_ROOT $HOME/.pyenv
+    set -U fish_user_paths $PYENV_ROOT/bin $fish_user_paths
+    pyenv init - fish | source
 
     # eza
     function ls
