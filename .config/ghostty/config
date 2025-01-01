@@ -1,8 +1,5 @@
 # ~/.config/ghostty/config
 
-# font-family = Iosevka Fixed
-# font-family = Symbol Nerd Font Mono
-# window-title-font-family = Inter Medium
 # auto-update = check
 bold-is-bright = true
 # clipboard-paste-protection = true
@@ -20,20 +17,20 @@ font-size = 13
 # macos-secure-input-indication = true
 # macos-titlebar-proxy-icon = hidden
 macos-titlebar-style = hidden
-# macos-window-shadow = true
+macos-window-shadow = false
 minimum-contrast = 1
-# mouse-hide-while-typing = true
+mouse-hide-while-typing = true
 # quit-after-last-window-closed = true
-# resize-overlay = never
-# shell-integration = fish
-# shell-integration-features = cursor,sudo,title
+resize-overlay = never
+shell-integration = fish
+shell-integration-features = no-cursor,sudo,title
 theme = dark:catppuccin-mocha,light:catppuccin-latte
 window-height = 30
 # window-inherit-font-size = false
 # window-inherit-working-directory = false
-# window-padding-balance = true
+window-padding-balance = true
 window-padding-x = 10
 window-padding-y = 10
 # window-save-state = always
-# window-step-resize = true
+window-step-resize = true
 window-width = 100
