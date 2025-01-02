@@ -6,7 +6,7 @@
   "editor.codeLensFontFamily": "\"Iosevka Aile\"",
   "editor.codeLensFontSize": 13,
   "editor.fontFamily": "\"Iosevka Aile\", \"Symbols Nerd Font\"",
-  "editor.fontLigatures": true,
+  "editor.fontLigatures": "'dlig', 'calt'",
   "editor.fontSize": 14,
   "editor.fontWeight": "400",
   "editor.inlayHints.fontSize": 12,
@@ -26,7 +26,7 @@
   "window.autoDetectColorScheme": true,
   "window.systemColorTheme": "auto",
   "workbench.colorTheme": "Catppuccin Mocha",
-  "workbench.iconTheme": "catppuccin-mocha",
+  "workbench.iconTheme": "catppuccin-latte", // Updated automatically with system setting.
   "workbench.preferredDarkColorTheme": "Catppuccin Mocha",
   "workbench.preferredLightColorTheme": "Catppuccin Latte"
 }
