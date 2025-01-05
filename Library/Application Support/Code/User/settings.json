@@ -2,10 +2,9 @@
   "[html][css][javascript][json][jsonc]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "diffEditor.codeLens": true,
-  "editor.codeLensFontFamily": "\"Iosevka Aile\"",
+  "editor.codeLensFontFamily": "\"Iosevka Custom\"",
   "editor.codeLensFontSize": 13,
-  "editor.fontFamily": "\"Iosevka Aile\", \"Symbols Nerd Font\"",
+  "editor.fontFamily": "\"Iosevka Custom\", \"SymbolsCustom Nerd Font\"",
   "editor.fontLigatures": "'dlig', 'calt'",
   "editor.fontSize": 14,
   "editor.fontWeight": "400",
@@ -15,9 +14,29 @@
   "git.confirmSync": false,
   "git.enableSmartCommit": true,
   "git.openRepositoryInParentFolders": "never",
+  "latex-workshop.latex.recipe.default": "LuaLaTeX",
+  "latex-workshop.latex.recipes": [
+    {
+      "name": "LuaLaTeX",
+      "tools": ["lualatex"]
+    }
+  ],
+  "latex-workshop.latex.tools": [
+    {
+      "args": [
+        "-synctex=1",
+        "-interaction=nonstopmode",
+        "-file-line-error",
+        "%DOC%"
+      ],
+      "command": "lualatex",
+      "name": "lualatex"
+    }
+  ],
   "markdown.preview.fontFamily": "Inter",
   "notebook.markup.fontSize": 13,
-  "terminal.integrated.fontFamily": "\"IosevkaFixed Nerd Font Mono\"",
+  "terminal.integrated.fontFamily": "\"Iosevka Custom Fixed\", \"SymbolsCustom Nerd Font Mono\"",
+  // "terminal.integrated.fontFamily": "\"IosevkaCustomFixed Nerd Font Mono\"",
   "terminal.integrated.fontSize": 13,
   "terminal.integrated.fontWeight": 400,
   "terminal.integrated.fontWeightBold": 700,
@@ -26,7 +45,8 @@
   "window.autoDetectColorScheme": true,
   "window.systemColorTheme": "auto",
   "workbench.colorTheme": "Catppuccin Mocha",
-  "workbench.iconTheme": "catppuccin-latte", // Updated automatically with system setting.
+  "workbench.iconTheme": "catppuccin-mocha", // Updated automatically with system setting.
   "workbench.preferredDarkColorTheme": "Catppuccin Mocha",
-  "workbench.preferredLightColorTheme": "Catppuccin Latte"
+  "workbench.preferredLightColorTheme": "Catppuccin Latte",
+  "window.confirmSaveUntitledWorkspace": false,
 }
