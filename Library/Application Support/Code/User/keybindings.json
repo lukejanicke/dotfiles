@@ -1,0 +1,6 @@
+[
+    {
+        "key": "alt+cmd+,",
+        "command": "workbench.action.openSettingsJson"
+    }
+]
