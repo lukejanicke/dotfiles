@@ -1,32 +1,41 @@
 # ~/.zshrc
 
-# Basic Pronmpt
+# Basic pronmpt
 PROMPT='%B%F{yellow}zsh%f%b %B%F{blue}%~%f%b %(?.%F{green}.%F{red})%(!.❯❯.❯)%f '
 RPROMPT=''
 ZLE_RPROMPT_INDENT=0
 
+# Source alias
+alias s='source ~/.zshrc'
+
 # Starship
+export STARSHIP_CONFIG="$HOME/.config/starship/config.toml"
 eval "$(starship init zsh)"
 
-# Node
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+# uv (added by uv install script)
+. "$HOME/.local/bin/env"
 
-# Python
-export PYENV_ROOT="$HOME/.pyenv"
-[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
+# uv autocompletion
+autoload -Uz compinit && compinit # REQUIREMENT NOT DOCUMENTED
+eval "$(uv generate-shell-completion zsh)"
 
-# Source
-alias s='source ~/.zshrc'
+# Set bat theme based on macOS appearance
+set_bat_theme() {
+  if defaults read -g AppleInterfaceStyle 2>/dev/null | grep -q "Dark"; then
+    export BAT_THEME="Catppuccin Mocha"
+  else
+    export BAT_THEME="Catppuccin Latte"
+  fi
+}
+set_bat_theme
 
 # eza
 alias ls='eza --color=always --icons=always'
 alias tree='eza --tree --color=always --icons=always'
 
-# yt-dlp
-alias youtube='yt-dlp'
+# zoxide
+eval "$(zoxide init zsh)"
+alias cd="z"
 
 # fzf
 source <(fzf --zsh)
@@ -50,6 +59,8 @@ export FZF_CTRL_T_OPTS="
   --header 'Use CONTROL + / to toggle preview window (ZSH)'"
 
 # OPTION + C
+# Terminal: Requires 'Use Option as Meta key'
+# Ghostty: Requires 'macos-option-as-alt = true
 # - Search directories
 # - Print tree structure in the preview window
 # - cd into the selected directory 
@@ -90,16 +101,5 @@ _fzf_comprun() {
 # Alias is: fuck
 eval $(thefuck --alias)
 
-# zoxide
-eval "$(zoxide init zsh)"
-alias cd="z"
-
-# Set bat theme based on macOS appearance
-set_bat_theme() {
-  if defaults read -g AppleInterfaceStyle 2>/dev/null | grep -q "Dark"; then
-    export BAT_THEME="Catppuccin Mocha"
-  else
-    export BAT_THEME="Catppuccin Latte"
-  fi
-}
-set_bat_theme
+# yt-dlp
+alias youtube='yt-dlp'

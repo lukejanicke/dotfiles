@@ -1,11 +1,13 @@
-# ~/.config/starship.toml
-# https://starship.rs/config/
+# ~/.config/starship/config.toml
 
 "$schema" = "https://starship.rs/config-schema.json"
 
 format = "$shell$username$directory$character"
 
-right_format = "$git_branch $git_status"
+right_format = "$git_branch$git_status$aws"
+
+scan_timeout = 1000
+command_timeout = 10000
 
 add_newline = false
 
@@ -47,5 +49,10 @@ format = "[$symbol $branch]($style)"
 
 [git_status]
 style = "red bold"
-format = "[$all_status$ahead_behind]($style)"
+format = " [$all_status$ahead_behind]($style)"
 disabled = false
+
+[aws]
+symbol = 'aws'
+style = 'yellow bold'
+format = ' on [$symbol($profile )(\($region\) )]($style)'

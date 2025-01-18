@@ -1,22 +1,21 @@
 # ~/.config/fish/config.fish
 
 # Homebrew
-# This needs to precede Starship Prompt and SHELL reset
-# set -gx PATH /opt/homebrew/bin /opt/homebrew/sbin $PATH
-fish_add_path /opt/homebrew/bin /opt/homebrew/sbin
-set -gx HOMEBREW_PREFIX /opt/homebrew
-set -gx HOMEBREW_CELLAR /opt/homebrew/Cellar
-set -gx HOMEBREW_REPOSITORY /opt/homebrew
-set -gx MANPATH /opt/homebrew/share/man $MANPATH
-set -gx INFOPATH /opt/homebrew/share/info $INFOPATH
+fish_add_path /opt/homebrew/bin
+
+# Aider
+fish_add_path "/Users/lukejanicke/.local/bin"
 
 # MacTeX
-set -gx PATH /usr/local/texlive/2024/bin/universal-darwin $PATH
+fish_add_path /usr/local/texlive/2024/bin/universal-darwin
+
+# BasicTeX
+# fish_add_path /usr/local/texlive/2024basic/bin/universal-darwin
+
+# Greeting
+set -U fish_greeting ""
 
 if status is-interactive
-
-    # Fish greeting
-    set -U fish_greeting ""
 
     # No Fish window title bar updates
     function fish_title; end
@@ -51,18 +50,30 @@ if status is-interactive
         # EMPTY FOR NOW
     end
 
-    # Starship
-    # Should be preceded by Homebrew path configuration!
-    starship init fish | source
-
     # Source
     function s
         source ~/.config/fish/config.fish
     end
 
+    # Set Fish theme based on macOS appearance
+    function set_themes
+        if defaults read -g AppleInterfaceStyle 2>/dev/null | grep -q "Dark"
+            set -gx BAT_THEME "Catppuccin Mocha"
+            fish_config theme choose "Catppuccin Mocha"
+        else
+            set -gx BAT_THEME "Catppuccin Latte"
+            fish_config theme choose "Catppuccin Latte"
+        end
+    end
+    set_themes
+
+    # Starship
+    # Should be preceded by Homebrew path configuration!
+    starship init fish | source
+
     # pyenv
-    set -Ux PYENV_ROOT $HOME/.pyenv
-    set -U fish_user_paths $PYENV_ROOT/bin $fish_user_paths
+    set -gx PYENV_ROOT $HOME/.pyenv
+    fish_add_path $PYENV_ROOT/bin
     pyenv init - fish | source
 
     # eza
@@ -154,17 +165,5 @@ if status is-interactive
     function cd
         z $argv
     end
-
-    # Set themes based on macOS appearance
-    function set_themes
-        if defaults read -g AppleInterfaceStyle 2>/dev/null | grep -q "Dark"
-            set -gx BAT_THEME "Catppuccin Mocha"
-            fish_config theme choose "Catppuccin Mocha"
-        else
-            set -gx BAT_THEME "Catppuccin Latte"
-            fish_config theme choose "Catppuccin Latte"
-        end
-    end
-    set_themes
 
 end
