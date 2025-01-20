@@ -8,17 +8,6 @@ ZLE_RPROMPT_INDENT=0
 # Source alias
 alias s='source ~/.zshrc'
 
-# Starship
-export STARSHIP_CONFIG="$HOME/.config/starship/config.toml"
-eval "$(starship init zsh)"
-
-# uv (added by uv install script)
-. "$HOME/.local/bin/env"
-
-# uv autocompletion
-autoload -Uz compinit && compinit # REQUIREMENT NOT DOCUMENTED
-eval "$(uv generate-shell-completion zsh)"
-
 # Set bat theme based on macOS appearance
 set_bat_theme() {
   if defaults read -g AppleInterfaceStyle 2>/dev/null | grep -q "Dark"; then
@@ -33,12 +22,13 @@ set_bat_theme
 alias ls='eza --color=always --icons=always'
 alias tree='eza --tree --color=always --icons=always'
 
-# zoxide
-eval "$(zoxide init zsh)"
-alias cd="z"
-
 # fzf
 source <(fzf --zsh)
+
+# Use fd instead of find and ignore git files (in .gitignore)
+export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git"
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_ALT_C_COMMAND="fd --type=d --hidden --strip-cwd-prefix --exclude .git"
 
 # CONTROL + R
 # - Search commmand history
@@ -58,9 +48,9 @@ export FZF_CTRL_T_OPTS="
   --color header:italic
   --header 'Use CONTROL + / to toggle preview window (ZSH)'"
 
-# OPTION + C
+# OPTION + C 
 # Terminal: Requires 'Use Option as Meta key'
-# Ghostty: Requires 'macos-option-as-alt = true
+# Ghostty: Requires 'macos-option-as-alt = true'
 # - Search directories
 # - Print tree structure in the preview window
 # - cd into the selected directory 
@@ -69,11 +59,6 @@ export FZF_ALT_C_OPTS="
   --preview 'eza --tree --colour=always --icons=always {}'
   --color header:italic
   --header '(ZSH)'"
-
-# Use fd instead of find and ignore git files (in .gitignore)
-export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git"
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-export FZF_ALT_C_COMMAND="fd --type=d --hidden --strip-cwd-prefix --exclude .git"
 
 # Use fd for listing path candidates
 _fzf_compgen_path() {
@@ -90,16 +75,36 @@ _fzf_comprun() {
   local command=$1
   shift
   case "$command" in
-    cd)           fzf --preview "$eza_or_bat" "$@" ;;
+    cd)           fzf --preview "eza --tree --color=always {} | head -200" "$@" ;;
     export|unset) fzf --preview "eval 'echo ${}'" "$@" ;;
     ssh)          fzf --preview 'dig {}' "$@" ;;
-    *)            fzf --preview "$eza_or_bat" "$@" ;;
+    *)            fzf --preview "if [ -d {} ]; then eza --tree --color=always --icons=always {}; else bat -n --color=always {}; fi" "$@" ;;
   esac
 }
+
+# fnm
+eval "$(fnm env --use-on-cd --shell zsh)"
+
+# Starship
+export STARSHIP_CONFIG="$HOME/.config/starship/config.toml"
+eval "$(starship init zsh)"
 
 # thefuck
 # Alias is: fuck
 eval $(thefuck --alias)
 
-# yt-dlp
-alias youtube='yt-dlp'
+# uv
+. "$HOME/.local/bin/env" # Added by install script
+
+# uv autocompletion
+autoload -Uz compinit && compinit # REQUIREMENT NOT DOCUMENTED
+eval "$(uv generate-shell-completion zsh)"
+
+# zoxide
+eval "$(zoxide init zsh)"
+alias cd="z"
+
+# pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init - zsh)"
