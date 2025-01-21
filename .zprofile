@@ -1,4 +1,3 @@
 # ~/.zprofile
 
-# Homebrew
-eval "$(/opt/homebrew/bin/brew shellenv)"
+_source_dir ~/.config/zsh/zprofile

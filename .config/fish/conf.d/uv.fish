@@ -1,6 +1,6 @@
 # ~/.config/fish/conf.d/uv.fish
 
-source "$HOME/.local/bin/env.fish" # Added by install script
+source "$HOME/.local/bin/env.fish"
 
 if status is-interactive
 
